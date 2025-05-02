@@ -1,4 +1,4 @@
-package exercises;
+package _leetcode;
 
 import java.util.List;
 
