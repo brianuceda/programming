@@ -1,3 +1,6 @@
-# Leet Code
+# Leet Code Practice
 
-1. [TwoSum.java](https://github.com/brianuceda/leetcode/blob/main/exercises/TwoSum.java)
+### Easy
+
+- 1. [TwoSum](https://github.com/brianuceda/leetcode/blob/main/exercises/TwoSum.java)
+- 9. [PalindromeNumber](https://github.com/brianuceda/leetcode/blob/main/exercises/PalindromeNumber.java)
