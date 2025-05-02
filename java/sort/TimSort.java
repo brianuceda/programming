@@ -5,26 +5,35 @@ import java.util.Arrays;
 public class TimSort {
     public static void main(String[] args) {
         int[] array = {5, 2, 9, 1, 5, 6};
-        timSort(array);
-        System.out.println(Arrays.toString(array));
+        
+        // Implementacion automatica
+        int[] sortedArray1 = shortTimSort(array.clone());
+        System.out.println("Implementacion automatica: " + Arrays.toString(sortedArray1));
+        
+        // Implementacion manual
+        int[] sortedArray2 = timSort(array.clone());
+        System.out.println("Implementacion manual: " + Arrays.toString(sortedArray2));
     }
     
-    public static void shortTimSort(int[] array) {
+    public static int[] shortTimSort(int[] array) {
         Arrays.sort(array);
+        return array;
     }
 
-    public static void timSort(int[] arr) {
-        if (arr == null || arr.length <= 1) return;
+    public static int[] timSort(int[] arr) {
+        if (arr == null || arr.length <= 1) return arr;
         
         int n = arr.length;
         
-        // Insertion sort para pequeñas porciones
-        for (int i = 0; i < n; i += 32) {
-            insertionSort(arr, i, Math.min(i + 32 - 1, n - 1));
+        // Tamaño de ejecución mínimo
+        int minRun = 32;
+
+        for (int i = 0; i < n; i += minRun) {
+            insertionSort(arr, i, Math.min(i + minRun - 1, n - 1));
         }
         
         // Combinar con merge
-        for (int size = 32; size < n; size = 2 * size) {
+        for (int size = minRun; size < n; size = 2 * size) {
             for (int left = 0; left < n; left += 2 * size) {
                 int mid = left + size - 1;
                 int right = Math.min(left + 2 * size - 1, n - 1);
@@ -34,6 +43,8 @@ public class TimSort {
                 }
             }
         }
+        
+        return arr;
     }
     
     private static void insertionSort(int[] arr, int left, int right) {
