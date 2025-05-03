@@ -16,20 +16,16 @@ public class TimeExecutor {
     }
     
     // TODO: Ejemplo de uso
-    public static void test_function(int[] numbers) {
-        java.util.Arrays.sort(numbers);
-    }
-
     public static void main(String[] args) {
         // Array de enteros desordenados
-        int[] numbers = new int[100000];
+        int[] numbers = new int[1000000];
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = (int)(Math.random() * 1000000);
         }
         
         // Medir tiempo
         int time = measureTime(() -> {
-            test_function(numbers);
+            java.util.Arrays.sort(numbers);
         });
         
         System.out.println("Tiempo de ordenacion: " + time + " ms");

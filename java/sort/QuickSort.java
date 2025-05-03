@@ -1,19 +1,15 @@
 package sort;
 
-import java.util.Arrays;
-
 public class QuickSort {
     public static void main(String[] args) {
         int[] array = {5, 2, 9, 1, 5, 6};
-        int[] sortedArray = quickSort(array);
-        System.out.println(Arrays.toString(sortedArray));
+        quickSort(array);
+        System.out.println(java.util.Arrays.toString(array));
     }
 
-    public static int[] quickSort(int[] arr) {
-        if (arr == null || arr.length <= 1) return arr;
-        int[] arrCopy = Arrays.copyOf(arr, arr.length);
-        applyQuickSort(arrCopy, 0, arrCopy.length - 1);
-        return arrCopy;
+    public static void quickSort(int[] arr) {
+        if (arr == null || arr.length <= 1) return;
+        applyQuickSort(arr, 0, arr.length - 1);
     }
     
     private static void applyQuickSort(int[] arr, int low, int high) {
